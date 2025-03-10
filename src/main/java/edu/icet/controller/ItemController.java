@@ -12,7 +12,7 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("/Item")
 public class ItemController {
-    final ItemService service;
+    private final ItemService service;
     @GetMapping("/get-items")
     public List<Item> getItems(){
        return service.getItems();
@@ -24,6 +24,14 @@ public class ItemController {
     @PostMapping("/add-item")
     public void addItem(@RequestBody Item item){
         service.addItem(item);
+    }
+    @GetMapping("/{id}")
+    public Item getItemById(@PathVariable String itemCode){
+        return service.getItemById(itemCode);
+    }
+    @PutMapping("/update")
+    public Item updateItem(@RequestBody Item item){
+        return service.updateItem(item);
     }
 
 }

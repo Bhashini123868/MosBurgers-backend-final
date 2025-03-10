@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class ItemServiceImpl implements ItemService {
@@ -44,5 +46,20 @@ public class ItemServiceImpl implements ItemService {
                         )
                 ), Item.class
         );
+    }
+
+    @Override
+    public Item updateItem(Item item) {
+        if (repository.existsById(item.getItemCode())){
+            ItemEntity updatedEntity = repository.save(mapper.convertValue(item, ItemEntity.class));
+            return mapper.convertValue(updatedEntity, Item.class);
+        }
+        return null;
+    }
+
+    @Override
+    public Item getItemById(String itemCode) {
+        Optional<ItemEntity> entity = repository.findById(itemCode);
+        return entity.map(value -> mapper.convertValue(value, Item.class)).orElse(null);
     }
 }
