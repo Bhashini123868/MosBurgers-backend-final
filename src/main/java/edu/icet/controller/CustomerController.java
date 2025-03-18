@@ -6,23 +6,25 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/customer")
 @RequiredArgsConstructor
 @CrossOrigin
 public class CustomerController {
-    final CustomerService service;
+    private final CustomerService service;
     //  http://localhost:8081/customer
 
     @PostMapping("/add-customer")
-    public void addCustomer(@RequestBody Customer customer){
-        service.addCustomer(customer);
+    public Customer addCustomer(@RequestBody Customer customer){
+       return service.addCustomer(customer);
     }
     @GetMapping("/get-all-customer")
     public List<Customer> getAll(){
        return service.getAllCustomers();
     }
+
     @DeleteMapping("/delete/{id}")
     public Boolean deleteCustomer(@PathVariable Integer id){
         return service.deleteCustomer(id);
@@ -31,15 +33,19 @@ public class CustomerController {
     public Customer updateCustomer(@RequestBody Customer customer){
        return service.updateCustomer(customer);
     }
+
     @GetMapping("/searchCustomer/{id}")
-    public Customer searchCustomerById(@PathVariable Integer id){
+    public Optional<Customer> searchCustomerById(@PathVariable Integer id){
        return service.searchCustomerById(id);
     }
+
     @GetMapping("/searchByName/{name}")
     public List<Customer> searchByName(@PathVariable String name){
        return service.searchByName(name);
     }
-    public Customer searchByContact(@PathVariable String contact){
+
+    @GetMapping("searchByContact/{contact}")
+    public Optional<Customer> searchByContact(@PathVariable String contact){
        return service.searchByContact(contact);
     }
 }
