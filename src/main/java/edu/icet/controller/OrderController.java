@@ -20,16 +20,16 @@ public class OrderController {
         orderService.saveOrder(orderRequest);
     }
     @GetMapping("/{id}")
-    public OrderEntity getOrderById(@PathVariable int orderId){
-        return orderService.getOrderById(orderId);
+    public OrderEntity getOrderById(@PathVariable("id") int id){
+        return orderService.getOrderById(id);
     }
     @GetMapping("/all")
     public List<OrderEntity> getAllOrders(){
         return orderService.getAllOrders();
     }
     @DeleteMapping("/delete/{id}")
-    public boolean deleteOrder(@PathVariable int orderId){
-        return orderService.deleteOrder(orderId);
+    public boolean deleteOrder(@PathVariable("id") int id){
+        return orderService.deleteOrder(id);
     }
 
 }

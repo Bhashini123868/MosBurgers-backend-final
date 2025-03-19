@@ -1,4 +1,7 @@
 package edu.icet.repository;
 
-public interface OrderDetailsRepository {
+import edu.icet.entity.OrderDetailsEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface OrderDetailsRepository extends JpaRepository<OrderDetailsEntity, Long> {
 }

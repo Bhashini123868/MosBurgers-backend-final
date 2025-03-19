@@ -14,7 +14,7 @@ public class OrderDetailsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "orderId", nullable = false)
-    private String itemCode;
+    @JoinColumn(name = "itemCode",referencedColumnName = "itemCode", nullable = false)
+    private ItemEntity itemCode;
     private int qty;
 }

@@ -13,6 +13,7 @@ import java.util.List;
 @RequestMapping("/Item")
 public class ItemController {
     private final ItemService service;
+    //http://localhost:8081/item/add-item
 
     @GetMapping("/get-items")
     public List<Item> getItems(){
