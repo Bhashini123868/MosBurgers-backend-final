@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin
-@RequestMapping("/Item")
+@RequestMapping("/item")
 public class ItemController {
     private final ItemService service;
     //http://localhost:8081/item/add-item

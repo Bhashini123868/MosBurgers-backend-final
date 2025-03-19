@@ -13,6 +13,6 @@ public class Item {
     private String itemCode;
     private  String itemName;
     private double price;
-    private int discount;
+    private Integer discount;
 
 }
