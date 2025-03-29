@@ -15,6 +15,7 @@ import lombok.ToString;
 public class ItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String itemCode;
     private  String itemName;
     private double price;

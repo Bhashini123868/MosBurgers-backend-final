@@ -20,7 +20,7 @@ public class ItemController {
        return service.getItems();
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/{itemCode}")
     public Boolean deleteById(@PathVariable String itemCode){
          return service.deleteItems(itemCode);
     }
@@ -30,7 +30,7 @@ public class ItemController {
         return service.addItem(item);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("get-item-by-id/{id}")
     public Item getItemById(@PathVariable String itemCode){
         return service.getItemById(itemCode);
     }
