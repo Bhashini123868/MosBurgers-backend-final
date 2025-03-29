@@ -31,8 +31,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Boolean deleteItems(String id) {
-        repository.deleteById(id);
+    public Boolean deleteItems(String item_code) {
+        repository.deleteById(item_code);
         return true;
     }
 
